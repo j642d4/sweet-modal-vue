@@ -1,6 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
 var MinifyPlugin = require('babel-minify-webpack-plugin')
+// webpack.config.js
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 // Determine which env to use
 // by having it overriden at runtime using `cross-env NODE_ENV=...`
@@ -85,7 +87,8 @@ module.exports = {
 			'process.env': {
 				NODE_ENV: '"' + node_env + '"'
 			}
-		})
+		}),
+    new VueLoaderPlugin()
 	],
 
 	devtool: '#cheap-source-map',
